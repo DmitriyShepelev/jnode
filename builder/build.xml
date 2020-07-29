@@ -31,7 +31,21 @@
 	<property name="jnasm-src.dir"  value="${my-src.dir}/builder/org/jnode/jnasm"/>
 	<property name="jnasm-preprocessor-gen.dir"  value="${my-gen.dir}/org/jnode/jnasm/preprocessor/gen"/>
 	<property name="jnasm-assembler-gen.dir"  value="${my-gen.dir}/org/jnode/jnasm/assembler/gen"/>
+	<property environment="env"/>
 
+	<property name="checkerframework" value="${env.CHECKERFRAMEWORK}" />
+
+	<!-- On Mac/Linux, use the javac shell script; on Windows, use javac.bat -->
+	<condition property="cfJavac" value="javac.bat" else="javac">
+		<os family="windows" />
+	</condition>
+
+	<presetdef name="jsr308.javac">
+		<javac fork="yes" executable="${checkerframework}/checker/bin/${cfJavac}" >
+			<compilerarg value="-version"/>
+			<compilerarg value="-implicit:class"/>
+		</javac>
+	</presetdef>
 	<!-- Subproject specific classpath -->
 	<path id="my-cp">
 		<pathelement location="${jnode-core.jar}"/>
@@ -76,6 +90,32 @@
 		<jar jarfile="${jnode-builder.jar}"
         basedir="${my-classes.dir}"
         includes="org/jnode/ant/taskdefs/**"/>
+	</target>
+
+	<target name="check-signedness" depends="clean, prepare" description="Check signedness">
+		<jsr308.javac destdir="${my-classes.dir}"
+			   debug="on"
+			   optimize="on"
+			   fork="off"
+			   compiler="modern"
+			   includeJavaRuntime="true"
+			   target="${java.target}"
+			   source="${java.source}"
+			   encoding="${java.encoding}"
+			   excludes="**/*-template.java,**/package-info.java"
+			   srcdir="${my-src.dir}/builder/">
+			<compilerarg line="-processor org.checkerframework.checker.signedness.SignednessChecker"/>
+			<!-- optional, to not check uses of library methods:
+              <compilerarg value="-AskipUses=^(java\.awt\.|javax\.swing\.)"/>
+            -->
+			<compilerarg line="-Xmaxerrs 10000"/>
+			<bootclasspath path="${jnode-core.jar}"/>
+			<compilerarg value="${compilerarg}"/>
+			<filename name="org/jnode/ant/taskdefs/TemplateTask.java" />
+		</jsr308.javac>
+		<jar jarfile="${jnode-builder.jar}"
+			 basedir="${my-classes.dir}"
+			 includes="org/jnode/ant/taskdefs/**"/>
 	</target>
 
 	<target name="javacc" depends="prepare" >
