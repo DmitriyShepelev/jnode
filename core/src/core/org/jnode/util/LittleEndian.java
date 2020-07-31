@@ -20,7 +20,6 @@
  
 package org.jnode.util;
 
-
 /**
  * Little endian (LSB first) conversion methods.
  *
@@ -34,7 +33,7 @@ public class LittleEndian {
      * @param src
      * @param offset
      */
-    public static int getUInt8(byte[] src, int offset) {
+    public static @Unsigned int getUInt8(byte[] src, int offset) {
         return src[offset] & 0xFF;
     }
 
@@ -54,7 +53,7 @@ public class LittleEndian {
      * @param src
      * @param offset
      */
-    public static int getUInt16(byte[] src, int offset) {
+    public static @Unsigned int getUInt16(byte[] src, int offset) {
         final int v0 = src[offset + 0] & 0xFF;
         final int v1 = src[offset + 1] & 0xFF;
         return ((v1 << 8) | v0);
@@ -78,7 +77,7 @@ public class LittleEndian {
      * @param src
      * @param offset
      */
-    public static int getUInt24(byte[] src, int offset) {
+    public static @Unsigned int getUInt24(byte[] src, int offset) {
         final int v0 = src[offset + 0] & 0xFF;
         final int v1 = src[offset + 1] & 0xFF;
         final int v2 = src[offset + 2] & 0xFF;
@@ -91,7 +90,7 @@ public class LittleEndian {
      * @param src
      * @param offset
      */
-    public static int getInt24(byte[] src, int offset) {
+    public static @Unsigned int getInt24(byte[] src, int offset) {
         final int v0 = src[offset + 0] & 0xFF;
         final int v1 = src[offset + 1] & 0xFF;
         final int v2 = src[offset + 2] & 0xFF;
@@ -104,7 +103,7 @@ public class LittleEndian {
      * @param src
      * @param offset
      */
-    public static long getUInt32(byte[] src, int offset) {
+    public static @Unsigned long getUInt32(byte[] src, int offset) {
         final long v0 = src[offset + 0] & 0xFF;
         final long v1 = src[offset + 1] & 0xFF;
         final long v2 = src[offset + 2] & 0xFF;
@@ -132,7 +131,7 @@ public class LittleEndian {
      * @param src
      * @param offset
      */
-    public static long getUInt48(byte[] src, int offset) {
+    public static @Unsigned long getUInt48(byte[] src, int offset) {
         final long v0 = src[offset + 0] & 0xFF;
         final long v1 = src[offset + 1] & 0xFF;
         final long v2 = src[offset + 2] & 0xFF;

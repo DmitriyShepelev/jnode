@@ -145,7 +145,7 @@ public class LogRecord extends NTFSStructure {
      * @param offset the offset to the field in this structure.
      * @return the value.
      */
-    protected int getUInt16AcrossPages(int offset) {
+    protected @Unsigned int getUInt16AcrossPages(int offset) {
         if (getCrossesPage()) {
             int offsetWithinPage = getOffset() % pageSize + offset;
             if (offsetWithinPage + 2 > pageSize) {
@@ -162,7 +162,7 @@ public class LogRecord extends NTFSStructure {
      * @param offset the offset to the field in this structure.
      * @return the value.
      */
-    protected long getUInt32AcrossPages(int offset) {
+    protected @unsigned long getUInt32AcrossPages(int offset) {
         if (getCrossesPage()) {
             int offsetWithinPage = getOffset() % pageSize + offset;
             if (offsetWithinPage + 4 > pageSize) {

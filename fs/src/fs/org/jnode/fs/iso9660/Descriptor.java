@@ -40,7 +40,7 @@ public abstract class Descriptor implements ISO9660Constants {
      * @param bp
      * @return an unsigned byte
      */
-    protected static final int getUInt8(byte[] buffer, int bp) {
+    protected static final @Unsigned int getUInt8(byte[] buffer, int bp) {
         return LittleEndian.getUInt8(buffer, bp - 1);
     }
 
@@ -62,7 +62,7 @@ public abstract class Descriptor implements ISO9660Constants {
      * @param bp
      * @return an unsigned little-endian short
      */
-    protected static final int getUInt16LE(byte[] buffer, int bp) {
+    protected static final @Unsigned int getUInt16LE(byte[] buffer, int bp) {
         return LittleEndian.getUInt16(buffer, bp - 1);
     }
 
@@ -73,7 +73,7 @@ public abstract class Descriptor implements ISO9660Constants {
      * @param bp
      * @return an unsigned big-endian short
      */
-    protected static final int getUInt16BE(byte[] buffer, int bp) {
+    protected static final @Unsigned int getUInt16BE(byte[] buffer, int bp) {
         return BigEndian.getUInt16(buffer, bp - 1);
     }
 
@@ -84,7 +84,7 @@ public abstract class Descriptor implements ISO9660Constants {
      * @param bp
      * @return an unsigned short
      */
-    protected static final int getUInt16Both(byte[] buffer, int bp) {
+    protected static final @Unsigned int getUInt16Both(byte[] buffer, int bp) {
         return LittleEndian.getUInt16(buffer, bp - 1);
     }
 
@@ -95,7 +95,7 @@ public abstract class Descriptor implements ISO9660Constants {
      * @param bp
      * @return an unsigned little-endian int
      */
-    protected static final long getUInt32LE(byte[] buffer, int bp) {
+    protected static final @Unsigned long getUInt32LE(byte[] buffer, int bp) {
         return LittleEndian.getUInt32(buffer, bp - 1);
     }
 
@@ -106,7 +106,7 @@ public abstract class Descriptor implements ISO9660Constants {
      * @param bp
      * @return an unsigned big-endian int
      */
-    protected static final long getUInt32BE(byte[] buffer, int bp) {
+    protected static final @Unsigned long getUInt32BE(byte[] buffer, int bp) {
         return BigEndian.getUInt32(buffer, bp - 1);
     }
 
@@ -117,7 +117,7 @@ public abstract class Descriptor implements ISO9660Constants {
      * @param bp
      * @return an unsigned int
      */
-    protected static final long getUInt32Both(byte[] buffer, int bp) {
+    protected static final @Unsigned long getUInt32Both(byte[] buffer, int bp) {
         return LittleEndian.getUInt32(buffer, bp - 1);
     }
 

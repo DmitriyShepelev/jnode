@@ -69,7 +69,7 @@ public class SCSIBuffer extends BigEndian {
      * @param offset
      * @return the byte
      */
-    public final int getUInt8(int offset) {
+    public final @Unsigned int getUInt8(int offset) {
         return getUInt8(buffer, offset);
     }
 
@@ -90,7 +90,7 @@ public class SCSIBuffer extends BigEndian {
      * @param offset
      * @return the data
      */
-    public final int getUInt16(int offset) {
+    public final @Unsigned int getUInt16(int offset) {
         return getUInt16(buffer, offset);
     }
 

@@ -290,7 +290,7 @@ public class BootSector {
      * @param offset
      * @return int
      */
-    protected int get8(int offset) {
+    protected @Unsigned int get8(int offset) {
         return LittleEndian.getUInt8(data, offset);
     }
 
@@ -310,7 +310,7 @@ public class BootSector {
      * @param offset
      * @return int
      */
-    protected int get16(int offset) {
+    protected @Unsigned int get16(int offset) {
         return LittleEndian.getUInt16(data, offset);
     }
 
@@ -330,7 +330,7 @@ public class BootSector {
      * @param offset
      * @return int
      */
-    protected long get32(int offset) {
+    protected @Unsigned long get32(int offset) {
         return LittleEndian.getUInt32(data, offset);
     }
 

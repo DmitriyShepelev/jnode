@@ -96,7 +96,7 @@ public class NTFSStructure {
      * @param offset
      * @return
      */
-    public final int getUInt8(int offset) {
+    public final @Unsigned int getUInt8(int offset) {
         return LittleEndian.getUInt8(buffer, this.offset + offset);
     }
 
@@ -106,7 +106,7 @@ public class NTFSStructure {
      * @param offset
      * @return
      */
-    public final int getUInt16(int offset) {
+    public final int @Unsigned getUInt16(int offset) {
         return LittleEndian.getUInt16(buffer, this.offset + offset);
     }
 
@@ -116,7 +116,7 @@ public class NTFSStructure {
      * @param offset
      * @return
      */
-    public final int getUInt24(int offset) {
+    public final int @Unsigned getUInt24(int offset) {
         return LittleEndian.getUInt24(buffer, this.offset + offset);
     }
 
@@ -126,7 +126,7 @@ public class NTFSStructure {
      * @param offset
      * @return
      */
-    public final long getUInt32(int offset) {
+    public final @Unsigned long getUInt32(int offset) {
         return LittleEndian.getUInt32(buffer, this.offset + offset);
     }
 
@@ -136,7 +136,7 @@ public class NTFSStructure {
      * @param offset
      * @return
      */
-    public final int getUInt32AsInt(int offset) {
+    public final @Unsigned int getUInt32AsInt(int offset) {
         return (int) LittleEndian.getUInt32(buffer, this.offset + offset);
     }
 
@@ -146,7 +146,7 @@ public class NTFSStructure {
      * @param offset
      * @return
      */
-    public final long getUInt48(int offset) {
+    public final @Unsigned long getUInt48(int offset) {
         return LittleEndian.getUInt48(buffer, this.offset + offset);
     }
 
