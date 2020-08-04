@@ -34,18 +34,17 @@
 	<property environment="env"/>
 
 	<property name="checkerframework" value="${env.CHECKERFRAMEWORK}" />
-
 	<!-- On Mac/Linux, use the javac shell script; on Windows, use javac.bat -->
 	<condition property="cfJavac" value="javac.bat" else="javac">
 		<os family="windows" />
 	</condition>
-
 	<presetdef name="jsr308.javac">
 		<javac fork="yes" executable="${checkerframework}/checker/bin/${cfJavac}" >
 			<compilerarg value="-version"/>
 			<compilerarg value="-implicit:class"/>
 		</javac>
 	</presetdef>
+
 	<!-- Subproject specific classpath -->
 	<path id="my-cp">
 		<pathelement location="${jnode-core.jar}"/>
@@ -75,7 +74,6 @@
 		<jsr308.javac destdir="${my-classes.dir}"
 			   debug="on"
 			   optimize="on"
-			   fork="off"
 			   compiler="modern"
 			   includeJavaRuntime="true"
 			   target="${java.target}"
