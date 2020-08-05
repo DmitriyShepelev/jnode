@@ -20,13 +20,17 @@
 -->
 <!-- Ant lib for various common tasks -->
 <antlib>
-
+    <presetdef name="jsr308.javac">
+        <javac fork="yes" executable="${checkerframework}/checker/bin/${cfJavac}" >
+            <compilerarg value="-version"/>
+            <compilerarg value="-implicit:class"/>
+        </javac>
+    </presetdef>
   <!-- Predefined way of using javac -->
   <presetdef name="jnode.compile">
-    <javac destdir="${my-classes.dir}"
+    <jsr308.javac destdir="${my-classes.dir}"
 	       debug="on"
 	       optimize="on"
-           fork="on"
            memoryMaximumSize="${memoryMaximumSize}"
            compiler="modern"
 	       includeJavaRuntime="false"
@@ -34,9 +38,14 @@
            source="${java.source}"
            encoding="${java.encoding}"
            excludes="**/*-template.java,**/package-info.java">
+        <compilerarg line="-processor org.checkerframework.checker.nullness.NullnessChecker"/>
+        <!-- optional, to not check uses of library methods:
+          <compilerarg value="-AskipUses=^(java\.awt\.|javax\.swing\.)"/>
+        -->
+        <compilerarg line="-Xmaxerrs 10000"/>
 	  <bootclasspath path="${jnode-core.jar}"/>
       <compilerarg value="${compilerarg}"/>
-    </javac>
+    </jsr308.javac>
   </presetdef>
   
   <presetdef name="jnode.compile.test">

@@ -139,6 +139,21 @@
 	     in the boot image.  -->
 	<property name="jnode-core-class-list" value="${root.dir}/all/conf/core-classes.txt"/>
 	<property name="jnode-x86-class-list" value="${root.dir}/all/conf/x86-classes.txt"/>
+	<property environment="env"/>
+
+	<property name="checkerframework" value="${env.CHECKERFRAMEWORK}" />
+
+	<!-- On Mac/Linux, use the javac shell script; on Windows, use javac.bat -->
+	<condition property="cfJavac" value="javac.bat" else="javac">
+		<os family="windows" />
+	</condition>
+
+	<presetdef name="jsr308.javac">
+		<javac fork="yes" executable="${checkerframework}/checker/bin/${cfJavac}" >
+			<compilerarg value="-version"/>
+			<compilerarg value="-implicit:class"/>
+		</javac>
+	</presetdef>
 
 	<path id="cp">
 		<pathelement location="${classlib.jar}"/>
