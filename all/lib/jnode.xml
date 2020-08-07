@@ -43,7 +43,6 @@
           <compilerarg value="-AskipUses=^(java\.awt\.|javax\.swing\.)"/>
         -->
         <compilerarg line="-Xmaxerrs 10000"/>
-	  <bootclasspath path="${jnode-core.jar}"/>
       <compilerarg value="${compilerarg}"/>
     </jsr308.javac>
   </presetdef>
@@ -60,7 +59,6 @@
            source="${java.source}"
            encoding="${java.encoding}"
            excludes="**/*-template.java,**/package-info.java">
-	  <bootclasspath path="${jnode-core.jar}"/>
 	  <classpath path="${my-classes.dir}"/>
 	  <compilerarg value="${compilerarg}"/>
     </javac>
