@@ -38,8 +38,8 @@
            source="${java.source}"
            encoding="${java.encoding}"
            excludes="**/*-template.java,**/package-info.java">
-        <compilerarg line="-processor org.checkerframework.checker.nullness.NullnessChecker"/>
-        <!-- optional, to not check uses of library methods:
+        <compilerarg line="-processor org.checkerframework.checker.signedness.SignednessChecker"/>
+        <!-- optional, to not check uses of library methods
           <compilerarg value="-AskipUses=^(java\.awt\.|javax\.swing\.)"/>
         -->
         <compilerarg line="-Xmaxerrs 10000"/>
