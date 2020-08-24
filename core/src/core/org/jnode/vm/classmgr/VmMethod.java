@@ -454,7 +454,7 @@ public abstract class VmMethod extends VmMember implements VmSharedStaticsEntry 
     /**
      * Add the given pragma flags to my flags.
      */
-    final void addPragmaFlags(int flags) {
+    final void addPragmaFlags(char flags) {
         this.pragmaFlags |= flags;
 
         // KernelSpace implies uninterruptible

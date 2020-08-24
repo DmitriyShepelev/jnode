@@ -1097,9 +1097,9 @@ public final class ClassDecoder {
      * @param annotations
      * @param className
      */
-    private static int getMethodPragmaFlags(VmAnnotation[] annotations,
+    private static char getMethodPragmaFlags(VmAnnotation[] annotations,
                                             String className) {
-        int flags = 0;
+        char flags = 0;
         for (VmAnnotation a : annotations) {
             final String typeDescr = a.getTypeDescriptor();
             for (PragmaAnnotation ma : METHOD_ANNOTATIONS) {

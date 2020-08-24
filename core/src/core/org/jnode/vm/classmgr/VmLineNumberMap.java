@@ -80,7 +80,7 @@ public class VmLineNumberMap extends VmSystemObject {
      * @param pc
      * @return The line number
      */
-    public int findLineNr(int pc) {
+    public int findLineNr(char pc) {
         int ln = 0;
         if (lnTable != null) {
             final int len = lnTable.length;

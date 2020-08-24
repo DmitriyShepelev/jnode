@@ -130,7 +130,7 @@ public final class VmLocalVariable extends VmSystemObject {
      * @param index
      * @return
      */
-    final boolean matches(int pc, int index) {
+    final boolean matches(char pc, char index) {
         return (this.index == index) && (pc >= startPC) && (pc <= startPC + length);
     }
 

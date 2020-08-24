@@ -65,7 +65,7 @@ public final class VmInterpretedExceptionHandler extends AbstractExceptionHandle
      *
      * @return int
      */
-    public int getEndPC() {
+    public char getEndPC() {
         return endPC;
     }
 
@@ -74,7 +74,7 @@ public final class VmInterpretedExceptionHandler extends AbstractExceptionHandle
      *
      * @return int
      */
-    public int getHandlerPC() {
+    public char getHandlerPC() {
         return handlerPC;
     }
 
@@ -83,7 +83,7 @@ public final class VmInterpretedExceptionHandler extends AbstractExceptionHandle
      *
      * @return int
      */
-    public int getStartPC() {
+    public char getStartPC() {
         return startPC;
     }
 
@@ -93,7 +93,7 @@ public final class VmInterpretedExceptionHandler extends AbstractExceptionHandle
      * @param pc
      * @return True if the given pc is between start (inclusive) and end (inclusive), false otherwise
      */
-    public boolean isInScope(int pc) {
+    public boolean isInScope(char pc) {
         return (pc >= startPC) && (pc <= endPC);
     }
 }

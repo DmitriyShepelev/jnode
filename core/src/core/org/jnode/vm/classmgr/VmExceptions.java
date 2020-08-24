@@ -81,7 +81,7 @@ public final class VmExceptions extends VmSystemObject {
     /**
      * @return Returns the pragmaFlags.
      */
-    final int getPragmaFlags() {
+    final char getPragmaFlags() {
         return pragmaFlags;
     }
 }
