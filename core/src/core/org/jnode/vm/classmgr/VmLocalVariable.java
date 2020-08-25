@@ -119,8 +119,8 @@ public final class VmLocalVariable extends VmSystemObject {
      *
      * @return The (inclusive) end PC where this variable is valid
      */
-    public int getEndPC() {
-        return this.startPC + this.length;
+    public char getEndPC() {
+        return (char) (this.startPC + this.length);
     }
 
     /**
@@ -139,7 +139,7 @@ public final class VmLocalVariable extends VmSystemObject {
         sb.append('[');
         sb.append((int) startPC);
         sb.append('-');
-        sb.append(startPC + length);
+        sb.append((char) (startPC + length));
         sb.append(" idx:");
         sb.append((int) index);
         sb.append(']');
